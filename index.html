@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<!-- meta data -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="Description" content="Blank! - Interactive web-based game"/>
+		<meta name="author" content="Rebecca Tracey-Timoney">
+
+		<!-- favicon -->
+        <link rel="shortcut icon" href="assets/images/icon.png" title="Blank! Thumbnail Image">
+        
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/> <!-- Bootstrap Import-->
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'> <!-- Sweet Alert Import -->
+        <link rel="stylesheet" href="assets/css/style.css"/> <!-- style.css import-->
+		
+		<!-- Page title -->
+		<title>Blank!</title>
+
+		<!-- EmailJS Link -->
+		<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+		<script>
+			(function() {
+				emailjs.init("user_TMxBrvw73ZySzIBKjJ8E8");
+			})();
+		</script>
+
+        <!-- Font Awesome Import-->
+        <script src="https://kit.fontawesome.com/bc68bd906d.js" crossorigin="anonymous"></script> 
+	</head>
+	<body class="light-bg">
+
+		<!-- ================================= PLAYER INFO ================================= -->
+		<section id="player-info" aria-label="Player Information Menu">
+			<div id="info-content">
+				<div id="info-body" class="container-fluid">
+					<div class="row text-center">
+						<div class="col-12 info-text">
+							<img src="assets/images/champ1.jpg" alt="Blank! Logo">
+						</div>
+						<div class="col-12 info-text">
+							<h3>Think you know about championsverse?</h3>
+							<h4>Take the quiz and test your knowledge!</h4>
+						</div>
+						<div class="col-12 info-text">
+							<form class="userInfo">
+								<div class="form-group">
+									<input type="text" name="username" id="username" maxlength="10" placeholder="Enter Player Name" aria-label="Enter Player Name" required>
+								</div>
+								<button id="username-submit" class="btn btn-click" aria-label="Enter Button">Let's Go!</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================================= HEADER ================================= -->
+		<section id="header" aria-label="Header Section">
+			<div class="container-fluid header-sec">
+				<div class="row">
+					<!-- ======= Logo ======= -->
+					<div class="col-8 logo-sec">
+						<a href="index.html" aria-label="Link to Homepage">
+							<img class="btn-click" src="assets/images/champ1.jpg" alt="Blank! Logo">
+						</a>
+					</div>
+
+					<!-- ======= Toggle Buttons ======= -->
+					<div class="col-4 toggle-sec text-right">
+						<!-- Sound effects toggle function -->
+						<button class="mute-btn btn-click" aria-label="Mute button toggle">
+							<i class="fas fa-volume-up"></i>
+						</button>
+						
+						<!-- Light/Dark mode toggle function -->
+						<div class="toggle-switch">
+							<input type="checkbox" id="checkbox">
+							<label for="checkbox" class="toggle-slide">
+								<i class="fas fa-moon"></i>
+								<i class="fas fa-sun"></i>
+								<span class="toggle-ball"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================================= HOME PAGE ================================= -->
+		<section id="home" aria-label="Home Page">
+			<div class="container-fluid">
+				<!-- ======= Home Page Section ======= -->
+				<div class="row home-sec">
+					<div class="col-12">
+						<div class="row text-center">
+							<div class="col-12">
+								<h1 id="home-message">Take Quiz!</h1>
+							</div>
+							<div class="col-12">
+								<div class="row home-btns">
+									<div class="col-12 col-lg-6 cat-btns">
+										<a href="as-seen-on-tv.html" aria-label="Link to TV Category">
+											<img class="btn-click cat-img" src="assets/images/champ2.jpg" alt="Category Button: As Seen on TV">
+										</a>
+										
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================================= FOOTER  ================================= -->
+		<!-- Toggles Sliding footer for mobile for UX 
+				sourced and edited from http://jsfiddle.net/nathanbweb/JHu7j/ -->
+		<footer class="d-block d-lg-none footer-container" aria-label="Sliding Footer - small/medium devices only">
+			<div class="footer-sm">
+				<div class="footer-button">
+					<i class="far fa-caret-square-up btn-click" aria-hidden="true"></i>
+				</div>
+				<div class="footer-content">
+					<div class="container-fluid footer-text">
+						<div class="row">
+							<div class="col-12">
+								<span><i class="far fa-copyright"></i> Retromugen <span class="current-year"></span></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<ul class="footer-icon">
+									<li>
+										
+									</li>
+									<li>
+										<i class="far fa-lightbulb btn-click" data-toggle="modal" data-target="#form-modal"></i>
+									</li>
+									<li>
+										<a href="https://github.com/yw2e" target="_blank" rel="noopener" aria-label="Github - rebeccatraceyt">
+											<i class="fab fa-github-alt btn-click"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Footer only on larger screens - for UX purposes -->
+        <footer class="d-none d-lg-block footer-container" aria-label="Footer - larger devices only">
+            <div class="container-fluid">
+                <div class="row">
+					<div class="col-12 footer-home">
+						<ul class="footer-text text-center">
+							<li>
+								<span class="footer-copyright"><i class="far fa-copyright"></i> Retromugen <span class="current-year"></span></span>
+							</li>
+												</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+        </footer>
+
+		<!-- ================================= MODAL ================================= -->
+		<!-- ======= Form Modal ======= -->
+		<!-- sourced and edited from https://getbootstrap.com/docs/4.3/components/modal/ -->
+		<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-label="suggestion-form" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content form-content">
+					<div class="modal-header form-header">
+						<div>
+                            <h4 class="modal-title">Got a Suggestion?</h4>
+                            <p>Let the developer know!</p>
+                        </div> 
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span><i class="fas fa-times btn-click"></i></span>
+						</button>
+					</div>
+					<div class="modal-body form-body">
+						<form id="suggestionForm" aria-label="Suggestions Form">                                
+                            <input type="text" name="pName" id="pName" placeholder="Name" aria-label="Enter Name" required>
+                            <input type="email" name="pEmail" id="pEmail" placeholder="Email" aria-label="Enter Email" required>
+                            <textarea name="pMessage" id="pMessage" placeholder="Leave a message or suggestion" aria-label="Enter Message" rows="4" required></textarea>
+                            <input id="form-submit" type="submit" class="btn btn-click form-btn" aria-label="Submit Button" value="Send">
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ================================= SCRIPTS  ================================= -->
+		<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> <!-- jQuery Import -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script> <!-- JQuery Form Validation -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script> <!-- Sweet Alert Import-->
+		<script type="module" src="assets/js/script.js"></script> <!-- script.js Import-->
+	</body>
+</html>

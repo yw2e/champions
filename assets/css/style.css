@@ -1,0 +1,859 @@
+/*------------------------------------------------------- Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&family=Shadows+Into+Light+Two&display=swap');
+
+/*------------------------------------------------------- Root Variables */
+
+/* General Root Variables */
+:root {
+    /* Font variables */ 
+    --bodyfont: 'Roboto', sans-serif;
+    --titlefont: 'Shadows Into Light Two', cursive;    
+    
+    /* Colour Variables */
+    --white: rgb(252, 252, 252);
+    --black: rgb(0, 0, 0);
+    --btn-shadow: rgba(0,0,0,0.19);
+
+    /* Colour variables for toggle function */
+    --toggle-ball: rgb(255, 255, 255);
+    --toggle-off: rgb(165, 165, 165);
+    --toggle-on: rgb(64, 121, 67);
+
+    /* Colour Variables for Game buttons */
+    --correct: rgb(0, 128, 0);
+    --incorrect: rgb(255, 0, 0);
+
+}
+/* The following code is to implement light/dark colour palettes that define the toggle function - for UX purposes.
+    Sourced from https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8 */
+
+/* Light Mode colour variables */
+:root {
+    --blue: #5993d9;
+    --yellow: #fff59d;
+    --orange: #ef8257;
+}  
+/* Dark Mode colour variables */
+:root[data-theme="dark"]{
+    --blue: #001d48;
+    --yellow: #d6ce84;
+    --orange: #b8532c;
+}
+
+/*------------------------------------------------------- Special Styling */
+body {
+    color: var(--yellow);
+    font-family: var(--bodyfont);
+    font-weight: 300;
+    background-color: var(--blue);
+}
+body i {
+	color: var(--yellow);
+}
+
+button:focus {
+    /* reference: https://github.com/react-bootstrap/react-bootstrap/issues/1300 */
+    outline: none;
+}
+
+/* Edited from W3School's CSS placeholder example for better readability and consistency 
+    reference: https://www.w3schools.com/howto/howto_css_placeholder.asp */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--blue);;
+    opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--blue);;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--blue);;
+}
+
+.btn-click {
+    cursor: pointer;
+}
+
+/* Classes to be called based on light/dark mode */
+.light-bg {
+	background-image: url(../images/light.png);
+    background-attachment: scroll; /* To allow on ios devices */
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+}
+.dark-bg {
+	background-image: url(../images/dark.png);
+    background-attachment: scroll; /* To allow on ios devices */
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Display set to none by default to be called in by JS */
+#player-info {
+    display: none;
+}
+#header {
+    display: none;
+}
+#home {
+    display: none;
+}
+.end-sec {
+    display: none;
+}
+.footer-sm {
+    display: none;
+}
+.footer-home{
+    display: none;
+}
+.game-body {
+    display: none;
+}
+
+/*------------------------------------------------------- Player Info */
+#info-content {
+    width: 100vw;
+    height: 100vh;
+
+    display: inline-flex;
+    align-items: center;
+}
+.info-text {
+    padding-bottom: 5px;
+}
+.info-text img {
+    max-width: 90%;
+    height: auto;
+}
+.info-text h3 {
+    color: var(--blue);
+    padding: 10px 0;
+    font-size: 1.4rem;
+    font-family: var(--titlefont);
+    text-shadow: 1px 1px var(--black);
+    letter-spacing: 1px;
+}
+.info-text h4 {
+    padding: 5px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.info-text input {
+    font-size: 1.2rem;
+    min-width: 50%;
+    padding: 6px;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    text-align: center;
+}
+.info-text button {
+    font-size: 1.2rem;
+    background-color: var(--blue);
+    color: var(--white);
+}
+.info-text button:hover  {
+    background-color: var(--white);
+    color: var(--blue);
+}
+
+/*------------------------------------------------------- Header Section */
+.header-sec {
+    min-height: 10vh;
+    max-height: 10vh;
+}
+/* Styling for logo */
+.logo-sec {
+    padding: 10px;
+    width: 50vw;
+    height: auto;
+    left: 0;
+}
+.logo-sec img {
+    width: 80%;
+    height: auto;
+}
+
+/* Styling for Toggle buttons */
+.toggle-sec {
+   padding: 10px;
+   right: 0; 
+}
+.toggle-sec input {
+    display: none;
+}
+.mute-btn {
+    background: transparent;
+    border: none;
+
+    font-size: 1.2rem;
+    top: 10px;
+    right: 70px;
+    position: absolute; 
+    z-index: 101;
+}
+.toggle-switch {
+    /* sourced and edited from https://codepen.io/FlorinPop17/pen/XWWZYYG */
+    bottom: 0;
+    left: 0;
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+.toggle-slide {
+    background-color: var(--blue);
+    border: 1px solid var(--yellow);
+    border-radius: 50px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	height: 26px;
+	width: 50px;
+	transform: scale(1.2);
+}
+.toggle-ball {
+    background-color: var(--yellow);
+    border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 20px;
+	width: 20px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+input:checked + .toggle-slide .toggle-ball {
+    transform: translateX(24px);
+}
+
+/*------------------------------------------------------- Home Page */
+.home-sec {
+    min-height: 90vh;
+    width: 100vw;
+    padding-bottom: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#home-message {
+    font-family: var(--titlefont);
+    font-size: 2rem;
+} 
+.home-btns div > a {
+    width: 55vw;
+}
+
+/*------------------------------------------------------- Menu Section */
+/* Styling for Menu section on page */
+.menu-sec {
+    background-color: var(--blue);
+    min-height: 30vh;
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Styling for Category section */
+.cat-btns {
+    padding-top: .8rem;
+    display: flex;
+    justify-content: center;
+	z-index: 102;
+}
+
+/* Styling for buttons */
+.cat-btns a {
+    width: 80%;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 2px 3px var(--black);
+}
+.cat-img {
+    width: 100%;
+    height: 100%;
+}
+
+/*------------------------------------------------------- Game Play Section */
+.game-sec {
+    padding: 12px 5px 50px 5px;
+
+    min-height: 60vh;
+    max-height: 60vh;
+    width: 100vw;
+}
+.game-load {
+    /* reference: https://css-tricks.com/snippets/css/keyframe-animation-syntax/ */
+    display: block;
+    margin: auto;
+    font-size: 7rem;
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    -o-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.score-sec {
+    width: 100%;
+    height: 20%;
+    margin: 0%;
+}
+.play-sec {
+    max-width: 100vw;
+    min-height: 40vh;
+    max-height: 50vh;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Styling for each category background - for consistency purposes */
+.tv-bg {
+    background: url(../images/champ4.jpg) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+.chart-bg {
+    background: url(../images/chart-bg.png) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+.tb-bg {
+    background: url(../images/tb-bg.png) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+.movie-bg {
+    background: url(../images/movie-bg.png) no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Styling for heads up display in game mode */
+.score-hud {
+    padding: 15px;
+    margin: 0;
+}
+.score-hud li {
+    display: inline;
+    background-color: var(--blue);
+    border-radius: 10%;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    width: 50%;
+    height: 50%; 
+}
+.score-hud span, .score-hud a {
+    margin: 5px 1px;
+    padding: 5px 1px;
+}
+
+/* Styling for questions in game mode */
+.questions-sec h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-bottom: 5%;
+}
+
+/* Styling for answers in game mode */
+.answer-btn {
+    display: inline-block;
+    padding: 3px;
+}
+.answer-text {
+    font-size: 1rem;
+    background-color: var(--blue);
+    color: var(--white);
+
+    border-radius: 7px;
+    border: 2px solid var(--white);
+    box-shadow: 0 8px 16px 0 var(--btn-shadow), 0 6px 20px 0 var(--btn-shadow);
+
+    padding: 3px 10px;
+    margin: 3px;
+}
+
+/* Styling for conditional classes - when player is correct/incorrect */
+.correct button  {
+    background-color: var(--correct);
+}
+.incorrect button {
+    background-color: var(--incorrect);
+}
+
+/*------------------------------------------------------- Game End Text */
+.end-sec h3 {
+    font-size: 2.3rem;
+    font-family: var(--titlefont);
+    padding-top: 10%;
+}
+.end-sec h5 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.end-sec p {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+.end-sec i {
+    border: 2px solid var(--yellow);
+    padding: 10px;
+    font-size: 2rem;
+}
+.end-replay{
+    padding-top: 5%;
+}
+.end-icons-sec {
+    padding: 2vh 20vw;
+}
+.end-icons {
+    padding: 0;
+}
+
+/*------------------------------------------------------- Sliding Footer */
+/* Footer slides from bottom on mobile and tablet devices for UX purposes 
+    sourced and edited from http://jsfiddle.net/nathanbweb/JHu7j/ */
+.footer-container {
+    z-index: 103;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer-button {
+    
+    background: transparent;
+    font-size: 2rem;
+    position: absolute;
+    top: -45px;
+	right: 15px;
+	width:20px;
+	height:50px;
+    border: none;
+}
+.footer-content {
+    width: 100%;
+    height: 0px;
+    background: var(--blue);
+    border: none;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.footer-text {
+    padding: 5px;
+}
+.footer-text li {
+    display: inline;
+}
+.footer-icon {
+    padding-left: 0;
+}
+.footer-icon i {
+    padding: 5px;
+    color: var(--yellow);
+}
+
+/*------------------------------------------------------- Form Modal */
+.form-content {
+    background-color: var(--orange);
+    color: var(--white);
+}
+.form-header {
+    border: none;
+    padding-bottom: 0;
+    font-family: var(--titlefont);
+    letter-spacing: 1px;
+}
+.form-header p {
+    margin-bottom: 0;
+}
+.form-header i {
+    color: var(--white);
+}
+.form-body {
+    padding-top: 1rem;
+}
+/* Edited from W3School's example to style contact form 
+        reference: https://www.w3schools.com/howto/howto_css_contact_form.asp */
+.form-body input[type='text'], input[type='email'], textarea {
+    width: 100%;
+    padding: 7px;
+    border: 2px solid var(--white);
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 1px;
+    resize: none;
+}
+.form-btn {
+    float: right;
+    background-color: var(--white);
+    color: var(--blue);
+}
+.form-btn:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}
+.error {
+    /* Default class with JQuery Form Validator plugin */
+    color: var(--yellow);
+    font-weight: 500;
+}
+
+/*------------------------------------------------------- Media Queries */
+
+/* Breakpoint to maintain structural integrity on a Tablet device */
+@media (min-width: 700px) and (max-width: 991px) {
+
+    /*--------------------------------- Player Info */
+    /* Styling for Player Info */
+    .info-text img {
+        max-width: 80%;
+    }
+    .info-text h3 {
+        font-size: 2.5rem;
+    }
+    .info-text h4 {
+        font-size: 1.7rem;
+    }
+    .info-text input {
+        font-size: 1.5rem;
+        min-width: 30%;
+        max-width: 50%;
+    }
+    .info-text button {
+        font-size: 1.5rem;
+    }
+
+    /*--------------------------------- Header Section */
+    .logo-sec img {
+        width: 60%;
+    }
+    /* Styling mute button on tablet devices */
+    .mute-btn {
+        font-size: 1.5rem;
+        right: 85px;
+    }
+
+    /* Styling toggle button on tablet devices */
+    .toggle-switch {
+        right: 15px;
+        top: 15px;
+    }
+    .toggle-slide {
+        transform: scale(1.5);
+    }
+
+    /*--------------------------------- Menu Section */
+    /* Styling for Menu section on page on a medium screen */
+    .menu-sec {
+        min-height: 30vh;
+    }
+    .cat-sec {
+        max-height: 50vh;
+    }
+    .cat-btns a {
+        width: 60%;
+    }
+
+    /*--------------------------------- Home Page */
+    /* Styling for Home Page on a medium screen */
+    #home-message {
+        font-size: 3rem;
+    }
+    .home-btns div > a {
+        width: 45vw;
+    }
+
+    /*--------------------------------- Game Play Section */
+    /* Styling for Game Play section on page on a medium screen */
+    /* Styling for heads up display */
+    .score-hud li {
+        font-size: 1.8rem;
+    }
+
+    /* Styling for Questions and Answers section */
+    .questions-sec h2 {
+        font-size: 2rem;
+    }
+    .answer-text {
+        font-size: 1.5rem;
+    }
+
+    /*--------------------------------- Game End Text */
+    .end-sec h3 {
+        font-size: 3.5rem;
+    }
+    .end-sec h5 {
+        font-size: 2rem;
+    }
+    .end-sec p {
+        font-size: 1.6rem;
+    }
+    .end-sec i {
+        font-size: 2.5rem;
+    }
+    .end-icons-sec {
+        padding: 2vh 35vw;
+    }
+
+    /*--------------------------------- Sliding Footer */
+    /* Styling for Sliding Footer on a medium screen */
+    .footer-button {
+        font-size: 3rem;
+        top: -70px;
+        right: 35px;
+    } 
+    .footer-content {
+        font-size: 1.5rem;
+    }
+
+    /*--------------------------------- Form Modal */
+    .form-header h4 {
+        font-size: 2rem;
+    }
+    .form-header p {
+        font-size: 1.6rem;
+    }
+    .form-body input, textarea {
+        font-size: 1.2rem;
+    }
+    .form-body button {
+        font-size: 1.3rem;
+    }
+}
+
+/* Breakpoint to maintain structural integrity on a Laptop Screen */
+@media (min-width: 991px){ 
+
+    /*--------------------------------- Player Info */
+    /* Styling for Player Info Menu */
+
+    .info-text img {
+        width: 50%;
+    }
+    .info-text h3 {
+        font-size: 3rem;
+    }
+    .info-text h4 {
+        font-size: 1.7rem;
+    }
+    .info-text input {
+        font-size: 1.2rem;
+        min-width: 10%;
+        max-width: 20%;
+    }
+    .info-text button {
+        font-size: 1.2rem;
+    }
+    
+    /*--------------------------------- Header Section */
+    /* Styling for Header section on page on a larger screen */    
+    .header-sec {
+        position: fixed;
+    }
+    .logo-sec img {
+        width: 40%;
+        padding-left: 2%;
+    }
+
+    /* Styling mute button position on larger devices */
+    .mute-btn {
+        font-size: 1.5rem;
+        right: 90px;
+    }
+
+    /* Styling toggle button on larger devices */
+    .toggle-switch {
+        right: 20px;
+        top: 15px;
+    }
+    .toggle-slide {
+        transform: scale(1.5);
+    }
+
+    /*--------------------------------- Menu Section */
+    /* Styling for Menu section on page on a larger screen */
+    .menu-sec {
+        min-height: 100vh;
+        max-width: 30vw;
+        float: left;
+
+        justify-content: normal;
+    }
+    .cat-btns {
+        min-width: 30vw;
+    }
+    .cat-btns a {
+        width: 55%;
+    }
+
+    /*--------------------------------- Home Page */
+    /* Styling for Home Page on a larger screen */
+    .home-sec {
+        padding: 25vh 20vw;
+    }
+    #home-message {
+        font-size: 4rem;
+        padding-bottom: 25px;
+    } 
+    .home-btns div > a {
+        width: 80%;
+    }
+
+    /*--------------------------------- Game Play Section */
+    /* Styling for Game Play section on page on a larger screen */
+    .game-sec {
+        min-height: 100vh;
+        max-width: 70vw;
+        float: right;
+    }
+    .play-sec {
+        min-width: 65vw;
+        max-width: 70vw;
+        min-height: 80vh;
+        max-height: 80vh;
+        margin: 1px;
+    }
+
+    /* Styling for heads up display in game mode */
+    .score-hud li {
+        font-size: 2rem;
+    }
+
+    /* Styling for questions in game mode */
+    .questions-sec h2 {
+        font-size: 2rem;
+    }
+
+    /* Styling for answers in game mode */
+    .answer-text {
+        font-size: 1.8rem;
+    }
+
+    /*--------------------------------- Game End Text */
+    .end-sec h3 {
+        font-size: 4rem;
+    }
+    .end-sec h5 {
+        font-size: 2.8rem;
+    }
+    .end-sec p {
+        font-size: 2.3rem;
+    }
+    .end-sec i {
+        font-size: 2.8rem;
+    }
+    .end-icons-sec {
+        padding: 3% 35%;
+    }
+
+    /*--------------------------------- Footer */
+    /* Footer for larger devices only */
+    .footer-lg {
+        font-size: 1.1rem;
+        padding: 0;
+    }
+    .footer-lg ul {
+        min-width: 30vw;
+        max-width: 32vw;
+        padding-right: 50px;
+        margin-bottom: 3px;
+    }
+    .footer-home {
+        padding-top: 10px;
+        background-color: var(--blue);
+        width: 100vw;
+        font-size: 1.4rem;
+    }
+    .footer-icon a {
+        width: 2%;
+    }
+    .footer-copyright i {
+        padding-left: 2%;
+    }
+    /*--------------------------------- Form */
+    .form-header p {
+        font-size: 1.6rem;
+    }
+    .form-body input, textarea {
+        font-size: 1.2rem;
+    }
+    .form-body button {
+        font-size: 1.3rem;
+    }
+}
+
+/*------------------------------------------------------- 404 Page Styling */
+#error-page {
+    display: flex;
+    justify-content: center;
+}
+
+#error {
+    align-self: center;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 700;
+    padding-top: 10%;
+
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#error-img {
+    max-width: 80%;
+    height: auto;
+}
+#error button {
+    background-color: var(--blue);
+    border-radius: 7px;
+    border: 2px solid var(--white);
+    box-shadow: 0 8px 16px 0 var(--btn-shadow), 0 6px 20px 0 var(--btn-shadow);
+}
+#error button > a {
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+}
+#error button:hover  {
+    background-color: var(--white);
+}
+#error button > a:hover {
+    color: var(--blue);
+}

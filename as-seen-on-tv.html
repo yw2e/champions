@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<!-- meta data -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="Description" content="Blank! - Interactive web-based game"/>
+		<meta name="author" content="Rebecca Tracey-Timoney">
+
+		<!-- favicon -->
+        <link rel="shortcut icon" href="assets/images/icon.png" title="Blank! Thumbnail Image">
+
+		<!-- Stylesheets -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/> <!-- Bootstrap Import-->
+		<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'> <!-- Sweet Alert Import -->
+        <link rel="stylesheet" href="assets/css/style.css"/> <!-- style.css import-->
+
+		<!-- Page title -->
+		<title>Blank!</title>
+
+		<!-- EmailJS Link -->
+		<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+		<script>
+			(function() {
+				emailjs.init("user_TMxBrvw73ZySzIBKjJ8E8");
+			})();
+		</script>
+
+        <!-- Font Awesome Import-->
+        <script src="https://kit.fontawesome.com/bc68bd906d.js" crossorigin="anonymous"></script> 
+	</head>
+	<body>
+
+		<!-- ================================= HEADER ================================= -->
+		<section aria-label="Header Section">
+			<div class="container-fluid header-sec">
+				<div class="row">
+					<!-- ======= Logo ======= -->
+					<div class="col-8 logo-sec">
+						<a href="index.html" aria-label="Link to Homepage">
+							<img class="btn-click" src="assets/images/champ1.jpg" alt="Blank! Logo">
+						</a>
+					</div>
+
+					<!-- ======= Toggle Buttons ======= -->
+					<div class="col-4 toggle-sec text-right">
+						<!-- Sound effects toggle function -->
+						<button class="mute-btn btn-click" aria-label="Mute button toggle">
+							<i class="fas fa-volume-up"></i>
+						</button>
+
+						<!-- Light/Dark mode toggle function -->
+						<div class="toggle-switch">
+							<input type="checkbox" id="checkbox">
+							<label for="checkbox" class="toggle-slide">
+								<i class="fas fa-moon"></i>
+								<i class="fas fa-sun"></i>
+								<span class="toggle-ball"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================================= GAME PLAY ================================= -->
+		<section aria-label="Game Play Section">
+			<div class="container-fluid">
+				<!-- ======= Menu Section ======= -->
+				<div class="row menu-sec">
+					<div class="col-12 col-lg-3">
+						<div class="row cat-sec">
+							<div class="col-6 col-lg-12 cat-btns">
+								<a href="as-seen-on-tv.html" aria-label="Link to TV Category">
+									<img class="btn-click cat-img" src="assets/images/champ2.jpg" alt="Category Button: As Seen on TV">
+								</a>
+							</div>
+
+							<div class="col-6 col-lg-12 cat-btns">
+								<a href="https://twitter.com/intent/tweet?text=I%20now%20understand%20what%20%40ChampionsVerse%20is%20all%20about%20thanks%20%20a%20ton%20%40itami23%20and%20%40Abdraheem01%20%0ACheck%20this%20out%20guys%20" aria-label="Link to TV Category">
+									<img class="btn-click cat-img" src="assets/images/support.jpg" alt="Category Button: As Seen on TV">
+								</a>
+							</div>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ======= Game Play Section ======= -->
+				<div class="row game-sec tv-bg">
+					<!-- Game Loader -->
+					<div class="game-load">
+						<i class="fas fa-compact-disc"></i>
+					</div>
+					<div class="col-12 col-lg-9 game-body">
+						<div class="container-fluid justify-content-center">
+							<!-- Heads Up Display -->
+							<div class="row score-sec text-center text-lg-left">
+								<div class="col-12">
+									<ul class="score-hud">
+										<li class="score-text"><span id="score"><i class="far fa-star"></i></span></li>
+										<li class="score-text"><span id="time">00:00</span></li>
+										<li class="score-text">
+											<a href="as-seen-on-tv.html" rel="noopener" aria-label="Refresh page">
+												<i class="fas fa-redo btn-click"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<!-- Game Section -->
+							<div class="row play-sec text-center">
+								<!-- Q&A Section -->
+								<div class="col-12 questions-sec">
+									<h2 id="question">Question</h2>
+									<div class="answer-btn">
+										<button class="answer-text" data-number="1" value="" aria-label="Answer choice 1"></button>
+									</div>
+									<div class="answer-btn">
+										<button class="answer-text" data-number="2" value="" aria-label="Answer choice 2"></button>
+									</div>
+									<div class="answer-btn">
+										<button class="answer-text" data-number="3" value="" aria-label="Answer choice 3"></button>
+									</div>
+								</div>
+								<!-- End Game Section -->
+								<div class="col-12 end-sec">
+									<h3 class="hs-yes">New Champion!</h3>
+									<h3 class="hs-no">Nice Try!</h3>
+								</div>
+								<div class="col-12 end-sec">
+									<h5 class="hs-yes">Congratulations <span class="playerName"></span>!</h5>
+									<h5 class="hs-no">Well Done <span class="playerName"></span>!</h5>
+								</div>
+								<div class="col-12 end-sec">
+									<p>Your Score: <span class="final-score"></span></p>
+									<p class="hs-no hs-num">High Score: <span class="high-score"></span></p>
+								</div>
+								<div class="col-12 end-sec">
+									<p>Time: <span class="final-time"></span></p>
+								</div>
+								<div class="col-12 end-sec end-replay">
+									<p class="hs-yes">Play again?</p>
+									<p class="hs-no">Try again?</p>
+								</div>
+								<div class="col-12 end-sec">
+									<div class="row end-icons-sec">
+										<div class="col-6 end-icons">
+											<a href="index.html" class="btn-click" rel="noopener" aria-label="Return to Home page">
+												<i class="fas fa-home"></i>
+											</a>
+										</div>
+										<div class="col-6 end-icons">
+											<a href="as-seen-on-tv.html" class="btn-click" rel="noopener" aria-label="Refresh page">
+												<i class="fas fa-redo"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ================================= FOOTER  ================================= -->
+		<!-- Toggles Sliding footer for mobile for UX 
+				sourced and edited from http://jsfiddle.net/nathanbweb/JHu7j/ -->
+		<footer class="d-block d-lg-none footer-container" aria-label="Sliding Footer - small/medium devices only">
+			<div class="footer-button">
+				<i class="far fa-caret-square-up btn-click" aria-hidden="true"></i>
+			</div>
+			<div class="footer-content">
+				<div class="container-fluid footer-text">
+					<div class="row">
+						<div class="col-12">
+							<span><i class="far fa-copyright"></i> Retromugen <span class="current-year"></span></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<ul class="footer-icon">
+								<li>
+									<a href="https://www.linkedin.com/in/rebeccatraceytimoney/" target="_blank" rel="noopener" aria-label="Linkedin - Rebecca Tracey-Timoney">
+										<i class="fab fa-linkedin-in btn-click"></i>
+									</a>
+								</li>
+								<li>
+									<i class="far fa-lightbulb btn-click" data-toggle="modal" data-target="#form-modal"></i>
+								</li>
+								<li>
+									<a href="https://github.com/rebeccatraceyt" target="_blank" rel="noopener" aria-label="Github - rebeccatraceyt">
+										<i class="fab fa-github-alt btn-click"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Footer only on larger screens - for UX purposes -->
+		<footer class="d-none d-lg-block footer-container" aria-label="Footer - larger devices only">
+            <div class="container-fluid">
+                <div class="row">
+					<div class="col-lg-4 footer-lg">
+						<ul class="footer-text text-center">
+							<li>
+								<span class="footer-copyright"><i class="far fa-copyright"></i>Retromugen <span class="current-year"></span></span>
+							</li>
+							<li class="footer-icon">
+								
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-6">
+						<!-- Empty div to correctly position footer on page -->
+					</div>
+                </div>
+            </div>
+        </footer>
+
+		<!-- ================================= MODAL ================================= -->
+		<!-- ======= Form Modal ======= -->
+		<!-- sourced and edited from https://getbootstrap.com/docs/4.3/components/modal/ -->
+		<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-label="suggestion-form" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content form-content">
+					<div class="modal-header form-header">
+						
+                            
+				</div>
+			</div>
+		</div>	
+
+		<!-- ================================= SCRIPTS  ================================= -->
+		<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> <!-- jQuery Import -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script> <!-- JQuery Form Validation -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script> <!-- Sweet Alert Import-->
+		<script type="module" src="assets/js/script.js"></script> <!-- script.js Import-->
+		<script type="module" src="assets/js/tv-cat.js"></script> <!-- Category Import-->
+	</body>
+</html>
